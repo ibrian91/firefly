@@ -1,0 +1,161 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*Main container*/
+
+.main-container {
+  width: 1317px;
+  
+  height: 515.453px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+
+
+@media (max-width: 768px) {
+  .main-container {
+    max-width: 100%; /* Ocupa el ancho completo en pantallas medianas */
+    padding: 0 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-container {
+    max-width: 100%; /* Ancho completo en pantallas pequeñas */
+    padding: 0 8px;
+  }
+}
+
+/*slider container*/
+
+.slider-container {
+  position:relative;
+  height: 100%;
+}
+
+.container-images {
+    width: 100%; /* Ocupa el ancho completo del contenedor */
+    height: auto; /* Permite que la altura sea flexible en función del contenido */
+    max-height: 100%; /* Limita la altura en pantallas grandes */
+    border-radius: 20px;
+    border: 1px solid #eee;
+    overflow-x: auto; /* Activa el desbordamiento horizontal para pantallas pequeñas */
+    display: flex;
+}
+
+/* Ajustes específicos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .container-images {
+        height: auto; /* Ajusta la altura en pantallas pequeñas */
+        border-radius: 10px; /* Cambia el radio para un diseño más compacto */
+    }
+}
+
+.leftArrow{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    left: 32px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+    z-index: 1;
+    cursor: pointer;
+}
+
+
+.rightArrow{
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    right: 32px;
+    font-size: 50px;
+    font-weight: 700;
+    color: #fff;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 16px;
+  }
+  
+  .navbar-logo {
+    margin-right: 20px;
+  }
+  
+  .navbar-links {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .navbar-title {
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  /* Ajustes en pantallas medianas (tablets) */
+@media (max-width: 768px) {
+    .navbar {
+      padding: 0 12px;
+    }
+    
+    .navbar-logo {
+      margin-right: 12px;
+    }
+  
+    .navbar-links {
+      gap: 8px;
+    }
+    
+    .navbar-title {
+      font-size: 1.2em; /* Reduce el tamaño del título */
+    }
+  }
+  
+  /* Ajustes en pantallas pequeñas (móviles) */
+  @media (max-width: 480px) {
+    .navbar {
+      flex-direction: column;
+      padding: 0 8px;
+    }
+  
+    .navbar-logo {
+      margin: 0 auto; /* Centra el logo */
+      padding: 8px 0;
+    }
+  
+    .navbar-title {
+      font-size: 1em; /* Reduce más el título en móviles */
+      padding: 4px 0;
+    }
+  
+    .navbar-links {
+      flex-direction: column;
+      gap: 4px;
+      text-align: center;
+    }
+  }
+
+  /* puntos abajo de las imagenes del header*/
+
+  .dots-container{
+    display: flex;
+    justify-content: center;
+  }
+
+  .dots-container-item{
+    margin: 8px 3px;
+    cursor: pointer;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .dots-container-item.active {
+  color: #3498db; /* Cambia el color o cualquier otro estilo que quieras */
+}

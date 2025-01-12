@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
+import { FaWhatsapp } from 'react-icons/fa6'; 
 import Confetti from 'react-confetti'; // Librería para el confeti
 
 const Contact = () => {
@@ -61,24 +62,81 @@ const Contact = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6">
-      {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} numberOfPieces={500} gravity={0.1} colors={['#f7a1b1', '#85e0e2', '#a1e1f2']} />}
 
-      <div className="text-center mb-8 bg-white rounded-3xl shadow-md p-6 w-full max-w-2xl border border-gray-200">
+    
+    
+    <div>
+
+                  {/* Sección Quiénes Somos con imagen */}
+                  <section className="w-full py-20 bg-black text-white flex flex-col lg:flex-row justify-center items-center space-y-12 lg:space-y-0 lg:space-x-12 px-6 lg:px-20" data-aos="fade-up">
+    {/* Columna de Texto alineado a la izquierda */}
+    <div className="max-w-lg text-left">
+        <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-wide mb-4 relative inline-block">
+            CONTACTANOS
+            <span className="block w-20 h-1 bg-[#a464ff] mt-2"></span>
+        </h2>
+        <p className="font-semibold mb-4">
+            Listos para asesorarte
+        </p>
+        <p className="mb-4">
+            Nuestro equipo de expertos está listo para ayudarte a elegir el modelo
+            perfecto para tu iniciativa.
+        </p>
+
+        <p className="mb-4 flex flex-col items-start gap-4">
+    <a 
+        href="https://wa.me/5491163789091" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="flex items-center space-x-2 text-[#25D366] font-semibold hover:text-[#a464ff] transition-all duration-300"
+    >
+        <FaWhatsapp size={24} />
+        <span>+54 9 11 63789091</span>
+    </a>
+
+    <a 
+        href="mailto:hello@rxxxxxxxxxxxxxxxx" 
+        className="flex items-center space-x-2 text-[#25D366] font-semibold hover:text-[#a464ff] transition-all duration-300 text-lg"
+    >
+        <span>✉️</span>
+        <span>hello@rxxxxxxxxxxxxxxxx</span>
+    </a>
+</p>
+
+        
+    </div>
+
+    {/* Cuadro a la derecha para la imagen */}
+    <div className="w-full max-w-sm lg:max-w-md">
+        <img
+            src="src/assets/images/tango.jpg"
+            alt="Tecnología de vanguardia"
+            className="rounded-lg shadow-lg object-cover w-full h-auto"
+        />
+    </div>
+</section>
+
+{/* 
+      {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} numberOfPieces={500} gravity={0.1} colors={['#f7a1b1', '#85e0e2', '#a1e1f2']} />}
+ */}
+
+
+
+      {/* <div className="text-center mb-8 bg-white rounded-3xl shadow-md p-6 w-full max-w-2xl border border-gray-200">
         <h1 className="text-4xl font-extrabold text-blue-600 mb-4">¡Nos encantaría saber de ti!</h1>
         <p className="text-gray-700 text-lg leading-relaxed">
           Si tienes alguna pregunta, comentario o simplemente quieres saludar, completa el formulario a continuación.
           Nuestro equipo está comprometido a responderte lo antes posible.
         </p>
-      </div>
+      </div> */}
 
-      <div
+{/*       <div
         className={`relative transition-all bg-white rounded-lg shadow-lg p-8 w-full max-w-md border-2 ${borderAnimation ? 'border-blue-600' : 'border-transparent'} border-opacity-80`}
-      >
-        <h1 className="text-2xl font-bold text-center mb-6 text-gray-900">Contáctanos</h1>
+      > */}
+       {/*  <h1 className="text-2xl font-bold text-center mb-6 text-gray-900">Contáctanos</h1> */}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Nombre */}
+     {/*    <form onSubmit={handleSubmit} className="space-y-4">
+          
           <div>
             <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
               Nombre
@@ -94,7 +152,7 @@ const Contact = () => {
             />
           </div>
 
-          {/* Apellido */}
+          
           <div>
             <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
               Apellido
@@ -110,7 +168,7 @@ const Contact = () => {
             />
           </div>
 
-          {/* Email */}
+          
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
               Email
@@ -126,7 +184,7 @@ const Contact = () => {
             />
           </div>
 
-          {/* Mensaje */}
+         
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-gray-700">
               Mensaje
@@ -142,7 +200,7 @@ const Contact = () => {
             ></textarea>
           </div>
 
-          {/* Botón de enviar */}
+          
           <button
             type="submit"
             disabled={isSending}
@@ -151,12 +209,12 @@ const Contact = () => {
             {isSending ? 'Enviando...' : 'Enviar'}
           </button>
         </form>
-
+ */}
         {/* Estado del envío */}
-        {status && <p className="text-center mt-4 text-sm text-gray-600">{status}</p>}
-
-        {/* Animación del borde */}
-        {isSending && (
+   {/*      {status && <p className="text-center mt-4 text-sm text-gray-600">{status}</p>}
+ */}
+       
+{/*         {isSending && (
           <div className="absolute inset-0 border-animation">
             <style>{`
               @keyframes borderAnimation {
@@ -184,7 +242,9 @@ const Contact = () => {
             `}</style>
           </div>
         )}
-      </div>
+      </div> */}
+
+      
     </div>
   );
 };

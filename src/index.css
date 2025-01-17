@@ -4,12 +4,13 @@
 
 /*Main container*/
 
+/* Aseguramos que la imagen se ajuste correctamente sin zoom ni recorte */
 .main-container {
   width: 1317px;
-  
   height: 515.453px;
   margin: 0 auto;
   padding: 0;
+  position: relative; /* Necesario para que el contenedor tenga un contexto para las imágenes */
 }
 
 
@@ -31,18 +32,23 @@
 /*slider container*/
 
 .slider-container {
-  position:relative;
-  height: 100%;
+  position: relative;
+  width: 100%;
+  height: 100%; /* Asegura que ocupe toda la altura */
+  overflow: hidden; /* Oculta cualquier contenido fuera del contenedor */
 }
 
 .container-images {
-    width: 100%; /* Ocupa el ancho completo del contenedor */
-    height: auto; /* Permite que la altura sea flexible en función del contenido */
-    max-height: 100%; /* Limita la altura en pantallas grandes */
-    border-radius: 20px;
-    border: 1px solid #eee;
-    overflow-x: auto; /* Activa el desbordamiento horizontal para pantallas pequeñas */
-    display: flex;
+  display: flex;
+  width: 100%; /* Ocupa el ancho completo del contenedor */
+  height: 100%; /* Asegura que las imágenes no se desborden */
+  transition: transform 0.5s ease; /* Suaviza el movimiento al cambiar de imagen */
+}
+
+.container-images img {
+  object-fit: contain; /* Asegura que las imágenes se ajusten sin distorsionar ni recortar */
+  width: 100%;
+  height: 100%;
 }
 
 /* Ajustes específicos para pantallas pequeñas */

@@ -9,12 +9,12 @@ const PreguntasFrecuentes = () => {
   // Preguntas y respuestas
   const faqs = [
     { 
-      question: '¿Qué es un Gobo?', 
-      answer: 'Un Gobo es un dispositivo de proyección que permite crear imágenes, patrones o logotipos proyectados con iluminación en eventos o producciones.' 
+      question: '¿Que es un gobo o proyector de gobo?', 
+      answer: 'Los gobos, o un proyector de gobos, son proyectores “de luz led” que, gracias a la inserción de un gobo o un disco de animación en su interior, generan la proyección de imágenes, patrones o logotipos' 
     },
     { 
       question: '¿Cómo puedo solicitar un diseño personalizado?', 
-      answer: 'Para solicitar un diseño personalizado, simplemente contáctanos a través de nuestro formulario o por teléfono, y trabajaremos contigo para crear algo único.' 
+      answer: 'Para solicitar un diseño personalizado, simplemente contáctanos a través de nuestro formulario de contacto por mail o por whatsap, y trabajaremos contigo para crear algo único.' 
     },
     { 
       question: '¿Ofrecen servicios de alquiler de equipos?', 
@@ -22,19 +22,19 @@ const PreguntasFrecuentes = () => {
     },
     { 
       question: '¿Puedo elegir patrones ya diseñados?', 
-      answer: 'Sí, tenemos un catálogo con cientos de diseños predefinidos que puedes elegir para tu evento, ya sea para bodas, conciertos, etc.' 
+      answer: 'Sí, tenemos un catálogo con cientos de diseños predefinidos que puedes elegir.' 
     },
     { 
       question: '¿Realizan la instalación de los equipos?', 
-      answer: 'Sí, ofrecemos servicios de instalación profesional para asegurarnos de que tu evento cuente con la mejor calidad de iluminación.' 
+      answer: 'La instalación es muy simple. De todas maneras ofrecemos servicios de asesoramiento e instalación profesional para que tu proyección genere el impacto que quieras.' 
     },
     { 
       question: '¿Qué materiales se utilizan para fabricar los gobos?', 
-      answer: 'Los gobos se fabrican con materiales como vidrio, metal o plástico, dependiendo de la durabilidad y la calidad de proyección deseada.' 
+      answer: 'Los gobos se fabrican con materiales como vidrio, metal o plástico, dependiendo de la durabilidad y la calidad de proyección deseada. En nuestro caso utilizamos vidrio de borosilicato, siendo este el mejor material para brindar durabilidad y calidad de imagen' 
     },
     { 
       question: '¿Cuánto tiempo se tarda en recibir un gobo personalizado?', 
-      answer: 'El tiempo de entrega depende de la complejidad del diseño, pero generalmente toma entre 5 y 10 días hábiles desde la aprobación del diseño.' 
+      answer: 'El tiempo de entrega depende de la complejidad del diseño, pero generalmente toma entre 5 y 10 días hábiles desde la aprobación del mismo.' 
     },
     { 
       question: '¿Qué diferencias hay entre gobos de vidrio y de metal?', 

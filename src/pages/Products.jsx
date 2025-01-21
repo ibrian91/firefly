@@ -12,6 +12,7 @@ import gobo6 from '../assets/images/gobo6.png';
 import gobo7 from '../assets/images/gobo7.png';
 import gobo8 from '../assets/images/gobo8.png';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 
 const scrollToGobosSection = () => {
@@ -145,7 +146,13 @@ const Products = () => {
   Contáctanos
 </Link>
       </section>
+
+      
+      <Footer/>
+
     </div>
+
+    
   );
 };
 

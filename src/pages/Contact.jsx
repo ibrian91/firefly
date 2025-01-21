@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { FaWhatsapp } from 'react-icons/fa6'; 
 import Confetti from 'react-confetti'; // Librería para el confeti
+import Footer from './Footer';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -244,7 +245,7 @@ const Contact = () => {
         )}
       </div> */}
 
-      
+      <Footer/>
     </div>
   );
 };

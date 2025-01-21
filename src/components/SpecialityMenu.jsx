@@ -31,18 +31,16 @@ const SpecialityMenu = () => {
 
   return (
     <motion.div
-      className="flex flex-col items-center gap-4 py-16 text-gray-800"
+      className="flex flex-col items-center gap-4 py-16"
       id="speciality"
       variants={fadeInMotion}  // Animación para el contenedor
       initial="initial"
       animate={isContentVisible ? 'animate' : 'initial'}  // Controlamos la animación con el estado
     >
-      <h1 className="text-3xl font-bold text-gray-800">QUE OFRECEMOS</h1>
+      <h1 className="text-3xl font-bold">QUE OFRECEMOS</h1>
       <p className="text-center max-w-2xl">
-        Ofrecemos una amplia variedad de modelos de Gobo Projection
-        Lamps, diseñados para satisfacer diferentes necesidades y
-        objetivos. Desde eventos corporativos hasta instalaciones artísticas,
-        contamos con soluciones versátiles que se adaptan a cada proyecto.
+        Ofrecemos una amplia variedad de modelos de Gobos, diseñados para satisfacer diferentes necesidades y
+        objetivos. Desde eventos corporativos hasta instalaciones artísticas.
       </p>
       <div className="flex sm:justify-center gap-6 pt-8 w-full overflow-scroll">
         {specialityData.map((data, index) => {

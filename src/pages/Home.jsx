@@ -6,6 +6,7 @@ import nuestros_servicios from '../assets/images/nuestros_servicios.png';
 import Modelos from '../components/Modelos';
 import ServiciosMenu from '../components/Servicios';
 import PreguntasFrecuentes from '../components/PreguntasFrecuentes';
+import Footer from './Footer';
 
 const Home = () => {
   return (
@@ -59,6 +60,7 @@ const Home = () => {
      
       <br />
 
+      <Footer />
      
     </div>
   );

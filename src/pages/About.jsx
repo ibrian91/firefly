@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Importar los estilos de AOS
+import Footer from './Footer';
 
 const About = () => {
   // Inicialización de AOS optimizada con useCallback
@@ -123,6 +124,7 @@ const About = () => {
 </section>
 
 
+    <Footer/>
 
 
     </div>

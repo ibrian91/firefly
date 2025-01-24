@@ -7,59 +7,45 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-6">
       <div className="container mx-auto px-4 md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Contenedor principal con flex y espaciado */}
+        <div className="flex flex-col md:flex-row justify-center md:justify-between items-stretch space-y-8 md:space-y-0">
           {/* Columna 1: Descripción */}
-          <div>
-            <h4 className="text-lg font-bold mb-4">Sobre Nosotros</h4>
-            <p className="text-gray-400">
+          <div className="flex-1 text-center md:text-left flex flex-col">
+            <h4 className="text-lg font-bold mb-2">Sobre Nosotros</h4>
+            <div className="border-b-2 border-gray-500 mb-4"></div> {/* Línea continua debajo del título */}
+            <p className="text-gray-400 leading-relaxed">
               Nos especializamos en ofrecer proyectores y gobos de alta calidad,
-              ideales para personalizar eventos y destacar tu marca en cualquier
-              lugar.
+              ideales para personalizar eventos y destacar tu marca en cualquier lugar.
             </p>
           </div>
 
           {/* Columna 2: Enlaces rápidos */}
-          <div>
-            <h4 className="text-lg font-bold mb-4">Enlaces Rápidos</h4>
-            <ul>
-              <li className="mb-2">
+          <div className="flex-1 text-center flex flex-col justify-between">
+            <h4 className="text-lg font-bold mb-2">Enlaces Rápidos</h4>
+            <div className="border-b-2 border-gray-500 mb-4"></div> {/* Línea continua debajo del título */}
+            <ul className="space-y-2">
+              <li>
                 <ScrollLink to="/" className="text-gray-400 hover:text-white">
                   Inicio
                 </ScrollLink>
               </li>
-
-              <li className="mb-2">
-                <ScrollLink
-                  to="/products"
-                  className="text-gray-400 hover:text-white"
-                >
+              <li>
+                <ScrollLink to="/products" className="text-gray-400 hover:text-white">
                   Productos
                 </ScrollLink>
               </li>
-
-              <li className="mb-2">
-                <ScrollLink
-                  to="/about"
-                  className="text-gray-400 hover:text-white"
-                >
+              <li>
+                <ScrollLink to="/about" className="text-gray-400 hover:text-white">
                   Sobre Nosotros
                 </ScrollLink>
               </li>
-
-              <li className="mb-2">
-                <ScrollLink
-                  to="/contact"
-                  className="text-gray-400 hover:text-white"
-                >
+              <li>
+                <ScrollLink to="/contact" className="text-gray-400 hover:text-white">
                   Contacto
                 </ScrollLink>
               </li>
-
-              <li className="mb-2">
-                <ScrollLink
-                  to="/faq"
-                  className="text-gray-400 hover:text-white"
-                >
+              <li>
+                <ScrollLink to="/faq" className="text-gray-400 hover:text-white">
                   ¿Dudas?
                 </ScrollLink>
               </li>
@@ -67,16 +53,13 @@ const Footer = () => {
           </div>
 
           {/* Columna 3: Redes sociales */}
-          <div>
-            <h4 className="text-lg font-bold mb-4">Síguenos</h4>
+          <div className="flex-1 text-center md:text-right flex flex-col">
+            <h4 className="text-lg font-bold mb-2">Seguinos</h4>
+            <div className="border-b-2 border-gray-500 mb-4"></div> {/* Línea continua debajo del título */}
             <div className="space-y-4">
               {/* Instagram */}
-              <div className="flex items-center space-x-2">
-                <img
-                  src={icon_Instagram}
-                  alt="Instagram"
-                  className="w-6 h-6"
-                />
+              <div className="flex justify-center md:justify-end items-center space-x-3">
+                <img src={icon_Instagram} alt="Instagram" className="w-6 h-6" />
                 <a
                   href="https://www.instagram.com/firefly.proyecciones/"
                   target="_blank"
@@ -88,14 +71,10 @@ const Footer = () => {
               </div>
 
               {/* WhatsApp */}
-              <div className="flex items-center space-x-2">
-                <img
-                  src={icon_WhatsApp}
-                  alt="WhatsApp"
-                  className="w-6 h-6"
-                />
+              <div className="flex justify-center md:justify-end items-center space-x-3">
+                <img src={icon_WhatsApp} alt="WhatsApp" className="w-6 h-6" />
                 <a
-                  href="https://wa.me/123456789" // Reemplaza con el enlace de WhatsApp correcto.
+                  href="https://wa.me/123456789"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white"
@@ -110,8 +89,7 @@ const Footer = () => {
         <hr className="my-6 border-gray-700" />
 
         <div className="text-center text-gray-400">
-          © {new Date().getFullYear()} Tu Empresa. Todos los derechos
-          reservados.
+          © {new Date().getFullYear()} FIREFLY. Todos los derechos reservados.
         </div>
       </div>
     </footer>

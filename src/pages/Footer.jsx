@@ -74,14 +74,19 @@ const Footer = () => {
               <div className="flex justify-center md:justify-end items-center space-x-3">
                 <img src={icon_WhatsApp} alt="WhatsApp" className="w-6 h-6" />
                 <a
-                  href="https://wa.me/123456789"
+                  href="https://wa.me/5491163789091?text=Buen%20dia%2C%20quiero%20recibir%20asesoramiento%20sobre%20%20gobos%20"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white"
                 >
                   WhatsApp
                 </a>
+
+
+                
               </div>
+
+             
             </div>
           </div>
         </div>

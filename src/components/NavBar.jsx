@@ -1,6 +1,6 @@
 import React from 'react';
 import { assets } from '../assets/assets';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation,Link } from 'react-router-dom';
 
 const NavBar = () => {
   const location = useLocation(); // Obtén la ubicación actual
@@ -9,7 +9,13 @@ const NavBar = () => {
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-gray-400 px-4 md:px-8 lg:px-16 bg-gray-900">
       {/* Logo alineado a la izquierda */}
       <div className="flex-shrink-0">
-        <img className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16" src={assets.logo} alt="Logo" />
+        <Link to="/">
+          <img
+            className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
+            src={assets.logo}
+            alt="Logo"
+          />
+        </Link>
       </div>
 
       {/* Menú centrado */}

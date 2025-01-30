@@ -97,7 +97,7 @@ const Products = () => {
     textTransform: 'uppercase',
     letterSpacing: '1px'
   }}>
-    Ofrecemos gobos tanto para <span style={{ color: '#ff6347', fontWeight: 'bold' }}>INDOOR</span> como <span style={{ color: '#ff6347', fontWeight: 'bold' }}>OUTDOOR</span>, es por eso que tenemos para tu medida según el wataje y lo que estés buscando.
+    Ofrecemos gobos tanto para <span style={{ color: '#ff6347', fontWeight: 'bold' }}>INDOOR</span> como <span style={{ color: '#ff6347', fontWeight: 'bold' }}>OUTDOOR</span>, es por eso que tenemos lo que estas buscando.
   </p>
   <p style={{
     fontSize: '1.125rem', 

@@ -96,11 +96,11 @@ const Contact = () => {
     </a>
 
     <a 
-        href="mailto:hello@rxxxxxxxxxxxxxxxx" 
+        href="mailto:fireflyproyecciones@gmail.com" 
         className="flex items-center space-x-2 text-[#25D366] font-semibold hover:text-[#a464ff] transition-all duration-300 text-lg"
     >
         <span>✉️</span>
-        <span>hello@rxxxxxxxxxxxxxxxx</span>
+        <span>fireflyproyecciones@gmail.com</span>
     </a>
 </p>
 

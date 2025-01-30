@@ -57,8 +57,8 @@ const About = () => {
       <section className="py-16 bg-[#1a1a1a]" data-aos="fade-up">
           <div className="flex justify-center gap-12 flex-wrap">
             {[
-              { title: 'Innovación', image: 'src/assets/images/innovacion.jpeg' },
-              { title: 'Calidad', image: 'src/assets/images/calidad.jpeg' }
+              { title: 'Innovación', image: 'src/assets/images/innovacion.jpeg', description:'Desarrollamos productos innovadores con tecnología de punta para transformar el futuro de la iluminación.' },
+              { title: 'Calidad', image: 'src/assets/images/calidad.jpeg', description:'Nos comprometemos con los más altos estándares, asegurando productos duraderos, seguros y de alto rendimiento.' },
             ].map((item, index) => (
               <div
                 key={index}
@@ -72,7 +72,7 @@ const About = () => {
                 />
                 <h4 className="text-xl font-semibold text-gray-200 mb-4">{item.title}</h4>
                 <p className="text-lg text-gray-300">
-                  Desarrollamos productos innovadores con tecnología de punta para transformar el futuro de la iluminación.
+                  {item.description}
                 </p>
               </div>
             ))}

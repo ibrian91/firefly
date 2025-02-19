@@ -110,7 +110,7 @@ const Contact = () => {
     {/* Cuadro a la derecha para la imagen */}
     <div className="w-full max-w-sm lg:max-w-md">
         <img
-            src="src/assets/images/tango.jpg"
+            src="assets/images/tango.jpg"
             alt="Tecnología de vanguardia"
             className="rounded-lg shadow-lg object-cover w-full h-auto"
         />

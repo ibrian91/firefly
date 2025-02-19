@@ -46,7 +46,7 @@ const About = () => {
         {/* Cuadro a la derecha para la imagen */}
         <div className="max-w-sm">
           <img
-            src="src/assets/images/tango.jpg"
+            src="assets/images/tango.jpg"
             alt="Tecnología de vanguardia"
             className="rounded-lg shadow-lg object-cover w-full h-auto"
           />
@@ -57,8 +57,8 @@ const About = () => {
       <section className="py-16 bg-[#1a1a1a]" data-aos="fade-up">
           <div className="flex justify-center gap-12 flex-wrap">
             {[
-              { title: 'Innovación', image: 'src/assets/images/innovacion.jpeg', description:'Desarrollamos productos innovadores con tecnología de punta para transformar el futuro de la iluminación.' },
-              { title: 'Calidad', image: 'src/assets/images/calidad.jpeg', description:'Nos comprometemos con los más altos estándares, asegurando productos duraderos, seguros y de alto rendimiento.' },
+              { title: 'Innovación', image: 'assets/images/innovacion.jpeg', description:'Desarrollamos productos innovadores con tecnología de punta para transformar el futuro de la iluminación.' },
+              { title: 'Calidad', image: 'assets/images/calidad.jpeg', description:'Nos comprometemos con los más altos estándares, asegurando productos duraderos, seguros y de alto rendimiento.' },
             ].map((item, index) => (
               <div
                 key={index}
@@ -98,7 +98,7 @@ const About = () => {
         {/* Cuadro a la derecha para la imagen */}
         <div className="max-w-full">
   <img
-    src="src/assets/images/ofrecemos.jpeg"
+    src="assets/images/ofrecemos.jpeg"
     alt="Tecnología de vanguardia"
     className="rounded-lg shadow-lg object-cover w-full h-auto max-w-[26rem]"
   />

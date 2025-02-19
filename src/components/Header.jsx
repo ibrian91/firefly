@@ -56,7 +56,7 @@ const Header = () => {
             {data.map((item, index) => (
               <li key={item.id} style={{ listStyle: 'none', flex: '0 0 100%' }}> {/* Mostrar solo una imagen a la vez */}
                 <img 
-                  src={item.imgUrl}
+                  src={`/assets/images/${item.imgUrl}`}
                   alt="imagen"
                   style={{
                     width: '100%', // Aseguramos que las imágenes ocupen todo el espacio

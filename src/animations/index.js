@@ -164,7 +164,7 @@ export const mobileLanding = () => {
     });
 };
 
-const animateShapes = () => {
+export const animateShapes = () => {
   const infiniteTl = gsap.timeline({
     repeat: -1,
   });
@@ -203,7 +203,7 @@ const animateShapes = () => {
     });
 };
 
-const animateMainShape = () => {
+export const animateMainShape = () => {
   const infiniteTl = gsap.timeline({
     repeat: -1,
   });

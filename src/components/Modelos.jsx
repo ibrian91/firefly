@@ -1,4 +1,3 @@
-import React from 'react';
 import modelos from '../assets/images/modelos.jpg';
 
 const ModelosMenu = () => {

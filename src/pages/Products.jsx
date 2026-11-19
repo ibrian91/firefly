@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import productsImage from '../assets/images/products2.png';
@@ -157,3 +156,4 @@ const Products = () => {
 };
 
 export default Products;
+import { useEffect } from 'react';

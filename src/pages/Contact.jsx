@@ -1,67 +1,7 @@
-import React, { useState } from 'react';
-import emailjs from '@emailjs/browser';
 import { FaWhatsapp } from 'react-icons/fa6'; 
-import Confetti from 'react-confetti'; // Librería para el confeti
 import Footer from './Footer';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    message: '',
-  });
-
-  const [status, setStatus] = useState('');
-  const [showConfetti, setShowConfetti] = useState(false); // Control para mostrar confeti
-  const [isSending, setIsSending] = useState(false); // Control para verificar si el envío está en proceso
-  const [borderAnimation, setBorderAnimation] = useState(false); // Control para la animación del borde
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setIsSending(true); // Empezamos el proceso de envío
-    setBorderAnimation(true); // Iniciamos la animación del borde
-
-    emailjs
-      .send(
-        'service_947txwd', // Reemplaza con tu Service ID
-        'template_2sqsoii', // Reemplaza con tu Template ID
-        {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          message: formData.message,
-        },
-        'Unze8SCKzj9s7Jv3l' // Reemplaza con tu User ID
-      )
-      .then(
-        () => {
-          setStatus('Mensaje enviado exitosamente.');
-          setFormData({ firstName: '', lastName: '', email: '', message: '' });
-          setTimeout(() => {
-            setShowConfetti(true); // Mostrar confeti
-            setTimeout(() => {
-              setShowConfetti(false); // Ocultamos el confeti después de 5 segundos
-              setStatus(''); // Ocultamos el mensaje de éxito después del confeti
-            }, 5000); // Confeti dura 5 segundos
-          }, 500); // Iniciamos el confeti después de la animación del borde
-        },
-        (error) => {
-          console.error('Error al enviar el mensaje:', error);
-          setStatus('Hubo un error al enviar el mensaje. Inténtalo de nuevo.');
-        }
-      )
-      .finally(() => {
-        setIsSending(false); // Dejamos de estar en proceso de envío
-      });
-  };
-
   return (
 
     

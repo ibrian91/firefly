@@ -1,89 +1,51 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { data } from '../assets/data';
 
 const Header = () => {
-  const listRef = useRef();
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [progress, setProgress] = useState(0);
-
-  // Función para cambiar la imagen actual
-  const scrollToImage = (index) => {
-    const listNode = listRef.current;
-    const imgWidth = listNode ? listNode.clientWidth : 500; // Ajustar el tamaño de la imagen en base al contenedor
-
-    setCurrentIndex(index);
-    listNode.scrollTo({
-      left: index * imgWidth, // Desplazar según el índice y el ancho de la imagen
-      behavior: 'smooth',
-    });
-  };
 
   useEffect(() => {
-    // Función para cambiar a la siguiente imagen
-    const autoSlide = () => {
-      setCurrentIndex((prevIndex) => {
-        const nextIndex = (prevIndex + 1) % data.length; // Volver al primer slide al final
-        scrollToImage(nextIndex);
-        return nextIndex;
-      });
-    };
+    if (data.length < 2) return undefined;
 
-    // Configurar el intervalo de 3 segundos para pasar automáticamente a la siguiente imagen
     const interval = setInterval(() => {
-      setProgress((prevProgress) => {
-        if (prevProgress >= 100) {
-          autoSlide();  // Cambiar a la siguiente imagen cuando el progreso llega a 100%
-          return 0;  // Resetear el progreso
-        }
-        return prevProgress + 1; // Incrementar el progreso
-      });
-    }, 30); // 30ms por cada incremento, para llegar a 100% en 3 segundos
+      setCurrentIndex((index) => (index + 1) % data.length);
+    }, 3000);
 
-    return () => clearInterval(interval); // Limpiar el intervalo cuando el componente se desmonte
-  }, [progress]);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="main-container">
       <div className="slider-container" style={{ position: 'relative', overflow: 'hidden' }}>
         <div className="container-images">
-          <ul ref={listRef} style={{
+          <ul style={{
             display: 'flex',
-            overflow: 'hidden',
+            flex: '0 0 auto',
             padding: 0,
             margin: 0,
-            width: '100%', // Aseguramos que el contenedor sea de 100% del ancho
+            width: `${data.length * 100}%`,
+            height: '100%',
+            transform: `translateX(-${(currentIndex * 100) / data.length}%)`,
+            transition: 'transform 0.5s ease',
           }}>
-            {data.map((item, index) => (
-              <li key={item.id} style={{ listStyle: 'none', flex: '0 0 100%' }}> {/* Mostrar solo una imagen a la vez */}
+            {data.map((item) => (
+              <li
+                key={item.id}
+                style={{
+                  listStyle: 'none',
+                  flex: `0 0 ${100 / data.length}%`,
+                  height: '100%',
+                }}
+              >
                 <img 
                   src={item.imgUrl}
-                  alt="imagen"
+                  alt="Proyección de gobos"
                   style={{
                     width: '100%', // Aseguramos que las imágenes ocupen todo el espacio
                     height: '100%', // Aseguramos que la imagen ocupe toda la altura
                     objectFit: 'contain', // Asegura que la imagen se ajuste sin recortes
                   }}
                 />
-                {/* Barra de progreso debajo de cada imagen */}
-                <div 
-                  style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '5px',
-                    backgroundColor: '#ddd',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: `${progress}%`,
-                      height: '100%',
-                      backgroundColor: '#4caf50',
-                      transition: 'width 0.03s linear',
-                    }}
-                  />
-                </div>
               </li>
             ))}
           </ul>

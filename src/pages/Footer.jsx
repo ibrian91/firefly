@@ -1,4 +1,3 @@
-import React from "react";
 import ScrollLink from "../components/ScroolLink";
 import icon_Instagram from "../assets/icons/instagram_icon.png";
 import icon_WhatsApp from "../assets/icons/whatsapp_icon.png"; // Asegúrate de importar el ícono de WhatsApp.
@@ -32,6 +31,11 @@ const Footer = () => {
               <li>
                 <ScrollLink to="/products" className="text-gray-400 hover:text-white">
                   Productos
+                </ScrollLink>
+              </li>
+              <li>
+                <ScrollLink to="/industrial" className="text-gray-400 hover:text-white">
+                  Industrial
                 </ScrollLink>
               </li>
               <li>

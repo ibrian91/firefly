@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import './Preloader.css';
 import { preLoaderAnim } from '../../animations';
 import { assets } from '../../assets/assets';
@@ -24,3 +23,4 @@ const Preloader = () => {
 }
 
 export default Preloader;
+import { useEffect } from 'react';

@@ -1,7 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { specialityData } from '../assets/assets';
 import { useInView } from 'react-intersection-observer';
+
+const SpecialityItem = ({ data, fadeInItem }) => {
+  const { ref, inView } = useInView({
+    triggerOnce: false,
+    threshold: 0.5,
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      key={data.speciality}
+      variants={fadeInItem}
+      initial="initial"
+      animate={inView ? 'animate' : 'initial'}
+      className="flex flex-col items-center text-sm cursor-pointer flex-shrink-0 hover:-translate-y-2 transition-all duration-500"
+    >
+      <div className="w-32 h-32 sm:w-40 sm:h-40 mb-2 rounded-lg overflow-hidden border border-gray-300 bg-white">
+        <img
+          className="w-full h-full object-contain"
+          src={data.image}
+          alt={data.speciality}
+        />
+      </div>
+    </motion.div>
+  );
+};
 
 const SpecialityMenu = () => {
   // Estado para controlar la visibilidad del contenido después del splash screen
@@ -43,32 +69,9 @@ const SpecialityMenu = () => {
         objetivos. Desde eventos corporativos hasta instalaciones artísticas.
       </p>
       <div className="flex sm:justify-center gap-6 pt-8 w-full overflow-scroll">
-        {specialityData.map((data, index) => {
-          // Usamos el hook useInView para cada especialidad
-          const { ref, inView } = useInView({
-            triggerOnce: false,  // La animación solo se dispara una vez
-            threshold: 0.5,  // Se activa cuando el 50% del item es visible
-          });
-
-          return (
-            <motion.div
-              ref={ref}
-              key={data.speciality}
-              variants={fadeInItem}  // Animación individual para cada item
-              initial="initial"
-              animate={inView ? 'animate' : 'initial'}
-              className="flex flex-col items-center text-sm cursor-pointer flex-shrink-0 hover:-translate-y-2 transition-all duration-500"
-            >
-              <div className="w-32 h-32 sm:w-40 sm:h-40 mb-2 rounded-lg overflow-hidden border border-gray-300 bg-white">
-                <img
-                  className="w-full h-full object-contain"
-                  src={data.image}
-                  alt={data.speciality}
-                />
-              </div>
-            </motion.div>
-          );
-        })}
+        {specialityData.map((data) => (
+          <SpecialityItem key={data.speciality} data={data} fadeInItem={fadeInItem} />
+        ))}
       </div>
     </motion.div>
   );

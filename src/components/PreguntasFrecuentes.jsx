@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import AOS from 'aos'; 
+import { useState } from 'react';
 import 'aos/dist/aos.css'; 
 
 const PreguntasFrecuentes = () => {

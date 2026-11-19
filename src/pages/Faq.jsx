@@ -1,4 +1,3 @@
-import React from 'react'
 import PreguntasFrecuentes from '../components/PreguntasFrecuentes'
 import Footer from './Footer'
 

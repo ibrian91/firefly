@@ -1,4 +1,3 @@
-import React from 'react';
 import { assets } from '../assets/assets';
 import { NavLink, useLocation,Link } from 'react-router-dom';
 
@@ -19,10 +18,11 @@ const NavBar = () => {
       </div>
 
       {/* Menú centrado */}
-      <ul className="flex-grow flex justify-center space-x-4 md:space-x-6 lg:space-x-8">
+      <ul className="flex-grow flex flex-wrap justify-center gap-x-3 gap-y-2 md:gap-x-5 lg:gap-x-8">
         {[
           { to: '/', label: 'HOME' },
           { to: '/products', label: 'PRODUCTOS' },
+          { to: '/industrial', label: 'INDUSTRIAL' },
           { to: '/about', label: 'SOBRE NOSOTROS' },
           { to: '/contact', label: 'CONTACTO' },
           { to: '/faq', label: '¿DUDAS?' },

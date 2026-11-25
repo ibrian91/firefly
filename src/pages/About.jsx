@@ -1,6 +1,10 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // Importar los estilos de AOS
 import Footer from './Footer';
+import tangoImage from '../assets/images/tango.jpg';
+import innovationImage from '../assets/images/innovacion.jpeg';
+import qualityImage from '../assets/images/calidad.jpeg';
+import offeringsImage from '../assets/images/ofrecemos.jpeg';
 
 const About = () => {
   // Inicialización de AOS optimizada con useCallback
@@ -45,7 +49,7 @@ const About = () => {
         {/* Cuadro a la derecha para la imagen */}
         <div className="max-w-sm">
           <img
-            src="assets/images/tango.jpg"
+            src={tangoImage}
             alt="Tecnología de vanguardia"
             className="rounded-lg shadow-lg object-cover w-full h-auto"
           />
@@ -56,8 +60,8 @@ const About = () => {
       <section className="py-16 bg-[#1a1a1a]" data-aos="fade-up">
           <div className="flex justify-center gap-12 flex-wrap">
             {[
-              { title: 'Innovación', image: 'assets/images/innovacion.jpeg', description:'Desarrollamos productos innovadores con tecnología de punta para transformar el futuro de la iluminación.' },
-              { title: 'Calidad', image: 'assets/images/calidad.jpeg', description:'Nos comprometemos con los más altos estándares, asegurando productos duraderos, seguros y de alto rendimiento.' },
+              { title: 'Innovación', image: innovationImage, description:'Desarrollamos productos innovadores con tecnología de punta para transformar el futuro de la iluminación.' },
+              { title: 'Calidad', image: qualityImage, description:'Nos comprometemos con los más altos estándares, asegurando productos duraderos, seguros y de alto rendimiento.' },
             ].map((item, index) => (
               <div
                 key={index}
@@ -97,7 +101,7 @@ const About = () => {
         {/* Cuadro a la derecha para la imagen */}
         <div className="max-w-full">
   <img
-    src="assets/images/ofrecemos.jpeg"
+    src={offeringsImage}
     alt="Tecnología de vanguardia"
     className="rounded-lg shadow-lg object-cover w-full h-auto max-w-[26rem]"
   />

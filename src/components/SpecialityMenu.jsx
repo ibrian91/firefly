@@ -68,7 +68,7 @@ const SpecialityMenu = () => {
         Ofrecemos una amplia variedad de modelos de Gobos, diseñados para satisfacer diferentes necesidades y
         objetivos. Desde eventos corporativos hasta instalaciones artísticas.
       </p>
-      <div className="flex sm:justify-center gap-6 pt-8 w-full overflow-scroll">
+      <div className="flex flex-wrap justify-center gap-6 pt-8 w-full">
         {specialityData.map((data) => (
           <SpecialityItem key={data.speciality} data={data} fadeInItem={fadeInItem} />
         ))}

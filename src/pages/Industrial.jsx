@@ -1,7 +1,22 @@
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from './Footer';
 
+const industrialStats = [
+  { target: 0, suffix: ' hs', label: 'Sin detener la planta', accessibleValue: '0 horas' },
+  { target: 50000, prefix: '+', suffix: ' hs', label: 'Vida útil continua en entornos exigentes', accessibleValue: 'Más de 50.000 horas' },
+  { target: 365, suffix: ' días', label: 'Señalización nítida sin repintado', accessibleValue: '365 días' },
+  { target: 300, prefix: '+', suffix: '%', label: 'Más visibilidad que la pintura tradicional', accessibleValue: 'Más de 300 por ciento' },
+];
+
 const Industrial = () => {
+  const videoSectionRef = useRef(null);
+  const videoRef = useRef(null);
+  const autoPlayAttemptedRef = useRef(false);
+  const countersStartedRef = useRef(false);
+  const [counterValues, setCounterValues] = useState(industrialStats.map(() => 0));
+  const [needsPlaybackPermission, setNeedsPlaybackPermission] = useState(false);
+
   const benefits = [
     {
       number: '01',
@@ -23,15 +38,95 @@ const Industrial = () => {
     },
   ];
 
+  useEffect(() => {
+    const section = videoSectionRef.current;
+    const video = videoRef.current;
+
+    if (!section || !video) return undefined;
+
+    let counterAnimationFrame;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+
+        if (!countersStartedRef.current) {
+          countersStartedRef.current = true;
+          const finalValues = industrialStats.map((stat) => stat.target);
+
+          if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            setCounterValues(finalValues);
+          } else {
+            const startTime = performance.now();
+            const duration = 2400;
+
+            const animateCounters = (currentTime) => {
+              const progress = Math.min((currentTime - startTime) / duration, 1);
+              const easedProgress = 1 - (1 - progress) ** 3;
+              setCounterValues(finalValues.map((value) => Math.round(value * easedProgress)));
+
+              if (progress < 1) {
+                counterAnimationFrame = requestAnimationFrame(animateCounters);
+              }
+            };
+
+            counterAnimationFrame = requestAnimationFrame(animateCounters);
+          }
+        }
+
+        if (!autoPlayAttemptedRef.current) {
+          autoPlayAttemptedRef.current = true;
+          video.muted = false;
+          video.play().then(
+            () => setNeedsPlaybackPermission(false),
+            () => setNeedsPlaybackPermission(true),
+          );
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    observer.observe(section);
+    return () => {
+      observer.disconnect();
+      if (counterAnimationFrame) cancelAnimationFrame(counterAnimationFrame);
+    };
+  }, []);
+
+  const enableVideoPlayback = async () => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = false;
+    try {
+      await video.play();
+      setNeedsPlaybackPermission(false);
+    } catch {
+      setNeedsPlaybackPermission(true);
+    }
+  };
+
   return (
     <>
       <main className="bg-[#101725] text-white">
         <section className="relative isolate overflow-hidden border-b border-white/10">
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_75%_45%,rgba(255,190,0,0.12),transparent_35%),linear-gradient(110deg,#101725_35%,#1d2630_100%)]" />
-          <div className="mx-auto grid min-h-[620px] max-w-7xl items-center gap-10 px-6 py-20 md:px-10 lg:grid-cols-[1.05fr_0.95fr] lg:py-24">
-            <div className="max-w-2xl">
+          <video
+            className="absolute inset-0 h-full w-full object-cover"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            aria-hidden="true"
+            tabIndex={-1}
+          >
+            <source src="/videos/industrial-hero.webm" type="video/webm" />
+          </video>
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,23,37,0.96)_0%,rgba(16,23,37,0.84)_48%,rgba(16,23,37,0.46)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(16,23,37,0.55),transparent_45%)]" />
+          <div className="relative z-10 mx-auto flex min-h-[620px] max-w-7xl items-center px-6 py-20 md:px-10 lg:py-24">
+            <div className="max-w-3xl">
               <p className="mb-5 text-sm font-extrabold uppercase tracking-[0.18em] text-orange-400">
-                Seguridad industrial · Firefly
+                Señaletica Industrial · Firefly
               </p>
               <h1 className="text-5xl font-black leading-[0.98] tracking-tight sm:text-6xl lg:text-7xl">
                 Sendas peatonales
@@ -46,46 +141,71 @@ const Industrial = () => {
                 to="/contact"
                 className="mt-9 inline-flex items-center rounded-full bg-[#ffc400] px-7 py-3.5 font-bold text-slate-950 transition hover:bg-yellow-300"
               >
-                Pedí un relevamiento <span className="ml-3 text-xl" aria-hidden="true">→</span>
+                Contactá a un asesor <span className="ml-3 text-xl" aria-hidden="true">→</span>
               </Link>
-            </div>
-
-            <div
-              className="relative mx-auto flex h-[330px] w-full max-w-[540px] items-end justify-center overflow-hidden rounded-3xl border border-white/10 bg-[linear-gradient(145deg,#29323a,#151b24_65%)] p-8 shadow-2xl sm:h-[390px]"
-              role="img"
-              aria-label="Representación de una senda peatonal proyectada con luz en una planta industrial"
-            >
-              <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,.07)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.07)_1px,transparent_1px)] [background-size:54px_54px]" />
-              <div className="absolute left-1/2 top-10 h-8 w-20 -translate-x-1/2 rounded-lg border-2 border-orange-400 bg-slate-700 shadow-[0_0_24px_rgba(255,155,0,.25)]" />
-              <div className="absolute left-1/2 top-[70px] h-[190px] w-[75%] -translate-x-1/2 bg-yellow-400/20 [clip-path:polygon(47%_0,53%_0,100%_100%,0_100%)]" />
-              <div className="relative z-10 flex h-28 w-[85%] items-stretch justify-center gap-2 sm:gap-3">
-                {[0, 1, 2, 3, 4, 5].map((stripe) => (
-                  <span
-                    key={stripe}
-                    className="w-full -skew-x-12 bg-gradient-to-b from-yellow-300 to-yellow-500 shadow-[0_0_18px_rgba(255,196,0,.35)]"
-                  />
-                ))}
-              </div>
-              <span className="absolute bottom-4 rounded-full border border-white/10 bg-slate-950/70 px-4 py-2 text-xs font-medium tracking-wide text-slate-300">
-                Proyección LED · sin contacto con el piso
-              </span>
             </div>
           </div>
         </section>
 
-        <section className="border-b border-white/10 bg-[#151d2b]">
-          <div className="mx-auto grid max-w-7xl grid-cols-2 divide-x divide-y divide-white/10 px-6 md:grid-cols-4 md:divide-y-0 md:px-10">
-            {[
-              ['+20', 'años de experiencia en iluminación'],
-              ['0', 'reparaciones de pintura en la zona proyectada'],
-              ['24/7', 'visibilidad durante cada turno'],
-              ['100%', 'sin contacto con el piso'],
-            ].map(([value, label]) => (
-              <div key={value} className="px-5 py-8 md:px-8 md:py-10">
-                <p className="text-4xl font-black text-[#ffc400] md:text-5xl">{value}</p>
-                <p className="mt-2 max-w-[210px] text-sm leading-6 text-slate-300">{label}</p>
+        <section
+          ref={videoSectionRef}
+          className="border-b border-white/10 bg-[radial-gradient(ellipse_at_50%_0%,rgba(255,196,0,0.10),transparent_55%)] px-6 py-14 md:px-10 md:py-20"
+        >
+          <div className="mx-auto grid max-w-6xl items-center justify-items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-16">
+            <div className="w-full max-w-2xl">
+              <p className="mb-5 text-center text-sm font-extrabold uppercase tracking-[0.18em] text-orange-400">
+                Beneficios de la señalización con luz
+              </p>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                {industrialStats.map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    className="rounded-2xl border border-white/10 bg-white/[0.04] p-5 transition-colors hover:border-yellow-400/40 sm:p-6"
+                  >
+                    <p
+                      className="whitespace-nowrap text-2xl font-black text-[#ffc400] sm:text-3xl"
+                      aria-label={stat.accessibleValue}
+                    >
+                      <span aria-hidden="true">
+                        {stat.prefix ?? ''}
+                        {counterValues[index].toLocaleString('es-AR')}
+                        {stat.suffix}
+                      </span>
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-300 sm:text-base">{stat.label}</p>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            <div className="relative lg:justify-self-end">
+              <video
+                ref={videoRef}
+                className="h-[380px] max-h-[70vh] w-auto max-w-full rounded-2xl border border-white/10 object-contain shadow-2xl sm:h-[440px]"
+                controls
+                playsInline
+                preload="metadata"
+                aria-label="Video de presentación de las soluciones industriales Firefly"
+              >
+                <source src="/videos/industrial-intro.mp4" type="video/mp4" />
+                Tu navegador no puede reproducir este video.
+              </video>
+              {needsPlaybackPermission && (
+                <div className="absolute inset-0 flex items-center justify-center rounded-2xl bg-slate-950/65 p-6 text-center">
+                  <div>
+                    <p className="mb-4 text-sm text-white">
+                      El navegador requiere una interacción para reproducir el video con sonido.
+                    </p>
+                    <button
+                      type="button"
+                      onClick={enableVideoPlayback}
+                      className="rounded-full bg-[#ffc400] px-5 py-3 font-bold text-slate-950 transition hover:bg-yellow-300"
+                    >
+                      Reproducir con sonido
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </section>
 

@@ -59,14 +59,14 @@ const Products = () => {
         <div className="flex w-full h-full items-center justify-center space-x-4 px-6 sm:px-12 md:px-24 lg:px-32">
           <img src={productsImage} alt="Imagen de producto 1" className="w-full sm:w-2/3 md:w-1/2 lg:w-1/2 h-auto object-cover rounded-md" />
           <div className="flex flex-col items-center text-center sm:text-left max-w-lg">
-            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 relative">OUTDOOR</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 relative">EXTERIOR</h2>
             <span className="animate-pulse" onClick={scrollToGobosSection} style={{ cursor: 'pointer' }}>
               <div className="w-12 h-12 flex items-center justify-center bg-white text-gray-800 rounded-full">
                 <span className="text-2xl">&#8592;</span>
               </div>
             </span>
             <div className="my-12"></div>
-            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 relative">INDOOR</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6 relative">INTERIOR</h2>
             <span className="animate-pulse" onClick={scrollToGobosSection} style={{ cursor: 'pointer' }}>
               <div className="w-12 h-12 flex items-center justify-center bg-white text-gray-800 rounded-full">
                 <span className="text-2xl">&#8594;</span>
@@ -96,7 +96,7 @@ const Products = () => {
     textTransform: 'uppercase',
     letterSpacing: '1px'
   }}>
-    Ofrecemos gobos tanto para <span style={{ color: '#ff6347', fontWeight: 'bold' }}>INDOOR</span> como <span style={{ color: '#ff6347', fontWeight: 'bold' }}>OUTDOOR</span>, es por eso que tenemos lo que estas buscando.
+    Ofrecemos gobos tanto para <span style={{ color: '#ff6347', fontWeight: 'bold' }}>INTERIOR</span> como <span style={{ color: '#ff6347', fontWeight: 'bold' }}>EXTERIOR</span>, es por eso que tenemos lo que estas buscando.
   </p>
   <p style={{
     fontSize: '1.125rem', 

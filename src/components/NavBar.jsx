@@ -22,7 +22,7 @@ const NavBar = () => {
         {[
           { to: '/', label: 'HOME' },
           { to: '/products', label: 'PRODUCTOS' },
-          { to: '/industrial', label: 'INDUSTRIAL' },
+          { to: '/industrial', label: 'SEÑALETICA INDUSTRIAL' },
           { to: '/about', label: 'SOBRE NOSOTROS' },
           { to: '/contact', label: 'CONTACTO' },
           { to: '/faq', label: '¿DUDAS?' },

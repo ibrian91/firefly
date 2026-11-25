@@ -1,5 +1,6 @@
 import { FaWhatsapp } from 'react-icons/fa6'; 
 import Footer from './Footer';
+import projectionImage from '../assets/images/set01.jpg';
 
 const Contact = () => {
   return (
@@ -50,8 +51,8 @@ const Contact = () => {
     {/* Cuadro a la derecha para la imagen */}
     <div className="w-full max-w-sm lg:max-w-md">
         <img
-            src="assets/images/tango.jpg"
-            alt="Tecnología de vanguardia"
+            src={projectionImage}
+            alt="Proyección de luces decorativas en un sendero"
             className="rounded-lg shadow-lg object-cover w-full h-auto"
         />
     </div>

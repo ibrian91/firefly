@@ -15,8 +15,8 @@ const NavBar = () => {
   ];
 
   return (
-    <nav className="relative z-50 mb-5 border-b border-gray-400 bg-gray-900 px-4 py-4 text-sm md:px-8 lg:flex lg:items-center lg:justify-between lg:px-16">
-      <div className="flex items-center justify-between lg:flex-1">
+    <nav className="relative z-50 mb-5 border-b border-gray-400 bg-gray-900 px-4 py-4 text-sm md:px-8 lg:h-24 lg:px-16">
+      <div className="flex items-center justify-between lg:absolute lg:left-16 lg:top-1/2 lg:-translate-y-1/2">
         <Link to="/">
           <img
             className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
@@ -41,7 +41,7 @@ const NavBar = () => {
 
       <ul
         id="primary-navigation"
-        className={`${isMenuOpen ? 'flex' : 'hidden'} absolute left-0 right-0 top-full flex-col gap-1 border-b border-white/10 bg-gray-900 px-4 py-3 shadow-xl lg:static lg:flex lg:flex-1 lg:flex-row lg:flex-wrap lg:justify-end lg:gap-x-6 lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:shadow-none`}
+        className={`${isMenuOpen ? 'flex' : 'hidden'} absolute left-0 right-0 top-full flex-col gap-1 border-b border-white/10 bg-gray-900 px-4 py-3 shadow-xl lg:absolute lg:inset-x-0 lg:top-1/2 lg:flex lg:w-full lg:-translate-y-1/2 lg:flex-row lg:flex-nowrap lg:justify-center lg:gap-x-6 lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:shadow-none`}
       >
         {links.map((link) => (
           <li key={link.to} className="relative">

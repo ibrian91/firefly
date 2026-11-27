@@ -1,13 +1,22 @@
 import { assets } from '../assets/assets';
-import { NavLink, useLocation,Link } from 'react-router-dom';
+import { useState } from 'react';
+import { NavLink, useLocation, Link } from 'react-router-dom';
 
 const NavBar = () => {
-  const location = useLocation(); // Obtén la ubicación actual
+  const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const links = [
+    { to: '/', label: 'HOME' },
+    { to: '/products', label: 'PRODUCTOS' },
+    { to: '/industrial', label: 'SEÑALETICA INDUSTRIAL' },
+    { to: '/about', label: 'SOBRE NOSOTROS' },
+    { to: '/contact', label: 'CONTACTO' },
+    { to: '/faq', label: '¿DUDAS?' },
+  ];
 
   return (
-    <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-gray-400 px-4 md:px-8 lg:px-16 bg-gray-900">
-      {/* Logo alineado a la izquierda */}
-      <div className="flex-shrink-0">
+    <nav className="relative z-50 mb-5 border-b border-gray-400 bg-gray-900 px-4 py-4 text-sm md:px-8 lg:flex lg:items-center lg:justify-between lg:px-16">
+      <div className="flex items-center justify-between lg:flex-1">
         <Link to="/">
           <img
             className="w-10 h-10 md:w-12 md:h-12 lg:w-16 lg:h-16"
@@ -15,39 +24,47 @@ const NavBar = () => {
             alt="Logo"
           />
         </Link>
+
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-md border border-white/20 p-2 text-white transition hover:bg-white/10 lg:hidden"
+          aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+          onClick={() => setIsMenuOpen((open) => !open)}
+        >
+          <span className="text-xl leading-none" aria-hidden="true">
+            {isMenuOpen ? '×' : '☰'}
+          </span>
+        </button>
       </div>
 
-      {/* Menú centrado */}
-      <ul className="flex-grow flex flex-wrap justify-center gap-x-3 gap-y-2 md:gap-x-5 lg:gap-x-8">
-        {[
-          { to: '/', label: 'HOME' },
-          { to: '/products', label: 'PRODUCTOS' },
-          { to: '/industrial', label: 'SEÑALETICA INDUSTRIAL' },
-          { to: '/about', label: 'SOBRE NOSOTROS' },
-          { to: '/contact', label: 'CONTACTO' },
-          { to: '/faq', label: '¿DUDAS?' },
-        ].map((link) => (
+      <ul
+        id="primary-navigation"
+        className={`${isMenuOpen ? 'flex' : 'hidden'} absolute left-0 right-0 top-full flex-col gap-1 border-b border-white/10 bg-gray-900 px-4 py-3 shadow-xl lg:static lg:flex lg:flex-1 lg:flex-row lg:flex-wrap lg:justify-end lg:gap-x-6 lg:border-0 lg:bg-transparent lg:px-0 lg:py-0 lg:shadow-none`}
+      >
+        {links.map((link) => (
           <li key={link.to} className="relative">
             <NavLink
               to={link.to}
+              onClick={() => setIsMenuOpen(false)}
               className={({ isActive }) =>
-                `text-white hover:text-blue-400 transition-all duration-300 ${
+                `block whitespace-nowrap px-3 py-2 text-white transition-all duration-300 hover:text-blue-400 lg:px-0 lg:py-0 ${
                   isActive ? 'font-bold' : 'font-normal'
                 }`
               }
             >
               {link.label}
             </NavLink>
-            {/* Indicador de página activa (el punto debajo) */}
             <div
-              className={`absolute left-1/2 transform -translate-x-1/2 mt-1 w-2 h-2 bg-white rounded-full ${
-                location.pathname === link.to ? 'block' : 'hidden'
+              className={`absolute left-1/2 mt-1 hidden h-2 w-2 -translate-x-1/2 rounded-full bg-white ${
+                location.pathname === link.to ? 'lg:block' : ''
               }`}
             ></div>
           </li>
         ))}
       </ul>
-    </div>
+    </nav>
   );
 };
 
